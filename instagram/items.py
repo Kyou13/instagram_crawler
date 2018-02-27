@@ -8,17 +8,28 @@
 import scrapy
 
 # 特定のハッシュタグの投稿の情報
-class HashItem(scrapy.Item):
-    '''
-    ・投稿者
-    ・いいねをした人
-    ・投稿画像（画像のURLでもいいかな）
-    '''
+class userItem(scrapy.Item):
     userId = scrapy.Field()
-    # good_userId = scrapy.Field()
+    postNum = scrapy.Field()
+    followerNum = scrapy.Field()
+    followingNum = scrapy.Field()
+    url = scrapy.Field()
+
+class goodItem(scrapy.Item):
+    userId = scrapy.Field()
+    postId = scrapy.Field()
+    postURL = scrapy.Field()
+    goodNum = scrapy.Field()
 
 
 class InstagramItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    pass
+
+
+class MapionspiderItem(scrapy.Item):
+    name = scrapy.Field()
+    latitude = scrapy.Field()
+    longitude = scrapy.Field()
     pass
