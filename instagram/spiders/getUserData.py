@@ -61,7 +61,7 @@ class HashSpider(CrawlSpider):
         for url in img_urls:
             yield SplashRequest(response.urljoin(url), self.parse_goodNum, args={'wait': 0.5})
 
-        # self.stepNextPageNum += 1 #  10ページ以上取得しないためのフラグ。
+        self.stepNextPageNum += 1 #  10ページ以上取得しないためのフラグ。
         # If there is a next page, we crawl it
         if self.stepNextPageNum<10 & has_next:
             url = response.url+"/?max_id="+media[-1]['id']
