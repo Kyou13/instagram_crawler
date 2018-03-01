@@ -22,12 +22,7 @@ class goodItem(scrapy.Item):
     goodNum = scrapy.Field()
 
 
-class InstagramItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
-
-
+# サンプル用(./instagram/spiders/Mapion_spider.py)
 class MapionspiderItem(scrapy.Item):
     name = scrapy.Field()
     latitude = scrapy.Field()

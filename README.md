@@ -13,24 +13,37 @@
     - いいねを積極的にしている。
     - メッセージを頻繁に送っている。
 
+## Spiderの説明
+- getUserData：ユーザーの投稿数・フォロー数・フォロワー数の取得
 
 ## 実行
-- Dockerの起動
-`$ docker run -p 8050:8050 scrapinghub/splash`
-- プログラムの実行
-`$ scrapy crawl getUserData -a account={sreenName}`hazuki.nkjm
-- splashを使った`$ scrapy shell`の実行
-`scrapy shell '{SPLASH_URL}/render.html?url={クロールしたいURL}/&timeout=10&wait=0.5'`
+### Dockerの使い方
+- コンテナの起動
+```
+$ docker run -d --name insta_splash -it -p 8050:8050 scrapinghub/splash
+```
+- コンテナの停止
+```
+$ docker stop insta_splash
+```
+### プログラムの実行
+```
+$ scrapy crawl getUserData
+```
+- splash-scrapyを使った`$ scrapy shell`の実行
+```
+scrapy shell '{SPLASH_URL}/render.html?url={クロールしたいURL}/&timeout=10&wait=0.5'
+```
+SPLASH_URLはsplash-scrapyコンテナの起動時に取得できる。
 
-
-### 欲しいデータ
+## 欲しいデータ
 - ユーザーから探す
   - ユーザー名
   - フォロワー数
   - 投稿ごとのいいね数
   - 投稿数
 
-### インスタの影響力が強いことがおおいユーザー特徴
+## インスタの影響力が強い傾向があるユーザー特徴
 - 投稿の世界観が統一されている。
   - 同じフィルター
   - 色
