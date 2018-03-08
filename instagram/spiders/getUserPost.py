@@ -47,8 +47,9 @@ class HashSpider(CrawlSpider):
         for url in img_urls:
             yield SplashRequest(response.urljoin(url), self.parse_goodNum, args={'wait': 0.5})
 
+        maxPageNum = 10
         # If there is a next page, we crawl it
-        if self.stepNextPageNum<10 & has_next:
+        if self.stepNextPageNum<maxPageNum & has_next:
             url = response.url+"/?max_id="+media[-1]['id']
             yield SplashRequest(url, callback=self.parse_item, args={'wait': 0.5},)
         self.stepNextPageNum += 1 #  10ページ以上取得しないためのフラグ。
@@ -58,7 +59,7 @@ class HashSpider(CrawlSpider):
         item = goodItem(
             userId = response.url.split('=')[-1],
             postId = response.url.split('/')[4],
-            postURL = response.url, # できたら、パラメータを捨てたい。
+            postURL = response.url.rsplit('/', 1)[0], # できたら、パラメータを捨てたい。
             goodNum = response.css('div._3gwk6._nt9ow span::text').extract_first(),
         )
         yield item

@@ -32,8 +32,8 @@ class HashSpider(CrawlSpider):
     def parse_item(self, response):
         self.account = response.url.split('/')[-2]
         followerNum = response.css('span._fd86t ::text').extract()[1]
-        followerNum = followerNum.replace(".", "").replace(",", "")
-        followerNum = re.sub('k', '000', followerNum)
+        followerNum = followerNum.replace('k','')
+        followerNum = int( float(followerNum)*1000 )
         # ユーザーデータの取得
         item = userItem(
             userId = self.account,

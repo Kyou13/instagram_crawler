@@ -18,15 +18,21 @@
 
 ## 実行
 ### Dockerの使い方
-- コンテナの起動
+- コンテナの作成・起動
 ```
 $ docker run -d --name insta_splash -it -p 8050:8050 scrapinghub/splash
+```
+- コンテナ起動
+```
+$ docker start insta_splash
 ```
 - コンテナの停止
 ```
 $ docker stop insta_splash
 ```
-### プログラムの実行
+
+### クローラーの実行
+- ユーザーデータのこクロール
 ```
 $ scrapy crawl getUserData
 ```
